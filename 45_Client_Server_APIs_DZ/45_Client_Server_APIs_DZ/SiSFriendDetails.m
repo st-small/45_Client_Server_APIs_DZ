@@ -74,7 +74,7 @@
     
     NSLog(@"%@", self.friend.lastName);
     
-    [cell.photoView setImageWithURL:self.friend.imageURL placeholderImage:[UIImage imageNamed:@"preview.gif"]];
+    [cell.photoView setImageWithURL:self.friend.image200URL placeholderImage:[UIImage imageNamed:@"preview.gif"]];
     cell.photoView.layer.cornerRadius = cell.photoView.frame.size.width / 2;
     cell.photoView.layer.masksToBounds = YES;
     

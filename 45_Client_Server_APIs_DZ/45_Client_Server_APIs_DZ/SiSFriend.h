@@ -12,7 +12,8 @@
 
 @property (strong, nonatomic) NSString* firstName;
 @property (strong, nonatomic) NSString* lastName;
-@property (strong, nonatomic) NSURL* imageURL;
+@property (strong, nonatomic) NSURL* image50URL;
+@property (strong, nonatomic) NSURL* image200URL;
 @property (strong, nonatomic) NSString* friendID;
 
 - (id) initWithServerResponse:(NSDictionary*) responseObject;

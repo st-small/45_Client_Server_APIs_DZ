@@ -106,7 +106,7 @@ static NSInteger friendsInRequest = 5;
     
     // Добавим картинку к каждой строке
     
-    NSURLRequest* request = [NSURLRequest requestWithURL:friend.imageURL];
+    NSURLRequest* request = [NSURLRequest requestWithURL:friend.image50URL];
     
     __weak UITableViewCell* weakCell = cell;
     

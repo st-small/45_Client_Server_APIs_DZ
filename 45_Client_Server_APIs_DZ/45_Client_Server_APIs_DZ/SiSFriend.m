@@ -19,11 +19,18 @@
         self.lastName = [responseObject objectForKey:@"last_name"];
         self.friendID = [responseObject objectForKey:@"user_id"];
         
-        NSString* urlString = [responseObject objectForKey:@"photo_50"];
+        NSString* urlString50 = [responseObject objectForKey:@"photo_50"];
         
-        if (urlString) {
+        if (urlString50) {
             
-            self.imageURL = [NSURL URLWithString:urlString];
+            self.image50URL = [NSURL URLWithString:urlString50];
+        }
+        
+        NSString* urlString200 = [responseObject objectForKey:@"photo_200"];
+        
+        if (urlString200) {
+            
+            self.image200URL = [NSURL URLWithString:urlString200];
         }
         
     }
