@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class SiSFriend;
+
 @interface SiSServerManager : NSObject
 
 + (SiSServerManager*) sharedManager;
@@ -16,5 +18,9 @@
                      andCount:(NSInteger) count
                     onSuccess:(void(^)(NSArray* friends)) success
                     onFailure:(void(^)(NSError* error, NSInteger statusCode)) failure;
+
+- (void) getFriendInfoWithId:(NSString*)friendID
+                 onSuccess:(void(^)(SiSFriend* friend))success
+                 onFailure:(void(^)(NSError *error))failure;
 
 @end

@@ -20,6 +20,8 @@
 		52EC70E31D058B3A001F8047 /* SiSFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC70E21D058B3A001F8047 /* SiSFriend.m */; };
 		52EC70E51D0590B9001F8047 /* preview.gif in Resources */ = {isa = PBXBuildFile; fileRef = 52EC70E41D0590B9001F8047 /* preview.gif */; };
 		52EC70E91D059352001F8047 /* preview_50.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EC70E81D059352001F8047 /* preview_50.png */; };
+		52EC70EC1D05E92A001F8047 /* SiSFriendDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC70EB1D05E92A001F8047 /* SiSFriendDetails.m */; };
+		52EC70EF1D06CE4A001F8047 /* SiSInfoCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC70EE1D06CE4A001F8047 /* SiSInfoCellTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,10 @@
 		52EC70E21D058B3A001F8047 /* SiSFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiSFriend.m; sourceTree = "<group>"; };
 		52EC70E41D0590B9001F8047 /* preview.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = preview.gif; sourceTree = "<group>"; };
 		52EC70E81D059352001F8047 /* preview_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preview_50.png; sourceTree = "<group>"; };
+		52EC70EA1D05E92A001F8047 /* SiSFriendDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiSFriendDetails.h; sourceTree = "<group>"; };
+		52EC70EB1D05E92A001F8047 /* SiSFriendDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiSFriendDetails.m; sourceTree = "<group>"; };
+		52EC70ED1D06CE4A001F8047 /* SiSInfoCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiSInfoCellTableViewCell.h; sourceTree = "<group>"; };
+		52EC70EE1D06CE4A001F8047 /* SiSInfoCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiSInfoCellTableViewCell.m; sourceTree = "<group>"; };
 		827C45AE65A9EDB4FC9DDA24 /* libPods-45_Client_Server_APIs_DZ.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-45_Client_Server_APIs_DZ.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D005A4EC463EFB8D928A4FB /* Pods-45_Client_Server_APIs_DZ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-45_Client_Server_APIs_DZ.release.xcconfig"; path = "Pods/Target Support Files/Pods-45_Client_Server_APIs_DZ/Pods-45_Client_Server_APIs_DZ.release.xcconfig"; sourceTree = "<group>"; };
 		AEB163A1AC8A8AD10F9C7E8D /* Pods-45_Client_Server_APIs_DZ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-45_Client_Server_APIs_DZ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-45_Client_Server_APIs_DZ/Pods-45_Client_Server_APIs_DZ.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +135,7 @@
 			children = (
 				52EC70DF1D058295001F8047 /* Models */,
 				52EC70E01D0582A6001F8047 /* Views */,
+				52EC70F01D06D3AF001F8047 /* Cells */,
 				52EC70AF1D057F62001F8047 /* Main.storyboard */,
 				52EC70E41D0590B9001F8047 /* preview.gif */,
 				52EC70E81D059352001F8047 /* preview_50.png */,
@@ -182,10 +189,21 @@
 		52EC70E01D0582A6001F8047 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				52EC70EA1D05E92A001F8047 /* SiSFriendDetails.h */,
+				52EC70EB1D05E92A001F8047 /* SiSFriendDetails.m */,
 				52EC70D91D057FCE001F8047 /* SiSFriendsTableViewController.h */,
 				52EC70DA1D057FCE001F8047 /* SiSFriendsTableViewController.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		52EC70F01D06D3AF001F8047 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				52EC70ED1D06CE4A001F8047 /* SiSInfoCellTableViewCell.h */,
+				52EC70EE1D06CE4A001F8047 /* SiSInfoCellTableViewCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		F032FB0069FB71F404EFE33F /* Frameworks */ = {
@@ -382,8 +400,10 @@
 			files = (
 				52EC70DB1D057FCE001F8047 /* SiSFriendsTableViewController.m in Sources */,
 				52EC70AB1D057F62001F8047 /* AppDelegate.m in Sources */,
+				52EC70EF1D06CE4A001F8047 /* SiSInfoCellTableViewCell.m in Sources */,
 				52EC70E31D058B3A001F8047 /* SiSFriend.m in Sources */,
 				52EC70DE1D058284001F8047 /* SiSServerManager.m in Sources */,
+				52EC70EC1D05E92A001F8047 /* SiSFriendDetails.m in Sources */,
 				52EC70A81D057F62001F8047 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

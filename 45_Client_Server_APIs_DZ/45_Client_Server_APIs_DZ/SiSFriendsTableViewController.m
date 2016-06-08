@@ -10,6 +10,7 @@
 #import "SiSServerManager.h"
 #import "SiSFriend.h"
 #import "UIImageView+AFNetworking.h"
+#import "SiSFriendDetails.h"
 
 @interface SiSFriendsTableViewController ()
 
@@ -101,6 +102,8 @@ static NSInteger friendsInRequest = 5;
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", friend.firstName, friend.lastName];
     
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     // Добавим картинку к каждой строке
     
     NSURLRequest* request = [NSURLRequest requestWithURL:friend.imageURL];
@@ -134,6 +137,30 @@ static NSInteger friendsInRequest = 5;
     }
 }
 
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    
+//    SiSFriend* friend = [self.friendsArray objectAtIndex:indexPath.row];
+//    SiSFriendDetails* vc = [[SiSFriendDetails alloc] init];
+//    [vc setFriendID:friend.friendID];
+//    [self.navigationController pushViewController:vc animated:YES];
+//    
+//}
+
+#pragma mark - Segues
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"FriendDetails"]) {
+        NSIndexPath* selectedIndexPath = [self.tableView indexPathForCell:sender];
+        SiSFriend* friend = [self.friendsArray objectAtIndex:selectedIndexPath.row];
+        
+        SiSFriendDetails* vc = [segue destinationViewController];
+        vc.friend = friend;
+        
+    }
+}
 
 
 @end

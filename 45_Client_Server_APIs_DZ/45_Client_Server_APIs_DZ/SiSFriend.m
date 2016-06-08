@@ -17,6 +17,7 @@
         
         self.firstName = [responseObject objectForKey:@"first_name"];
         self.lastName = [responseObject objectForKey:@"last_name"];
+        self.friendID = [responseObject objectForKey:@"user_id"];
         
         NSString* urlString = [responseObject objectForKey:@"photo_50"];
         

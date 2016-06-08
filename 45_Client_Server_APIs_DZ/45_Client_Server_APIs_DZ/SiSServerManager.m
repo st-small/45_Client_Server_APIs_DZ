@@ -51,7 +51,7 @@
     
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"4418798",     @"user_id",
-                            @"hints",        @"order",
+                            @"name",        @"order",
                             @(count),       @"count",
                             @(offset),      @"offset",
                             @"photo_50",    @"fields",
@@ -61,7 +61,7 @@
                   parameters:params
                     progress:nil
                      success:^(NSURLSessionDataTask* task, NSDictionary* responseObject) {
-                         NSLog(@"JSON: %@", responseObject);
+                         //NSLog(@"JSON: %@", responseObject);
                          
                          NSArray* friendsArray = [responseObject objectForKey:@"response"];
                          
@@ -86,6 +86,47 @@
                          }
                      }];
     
+}
+
+- (void) getFriendInfoWithId:(NSString*)friendID
+                   onSuccess:(void(^)(SiSFriend* friend))success
+                   onFailure:(void(^)(NSError *error))failure {
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            friendID,                   @"user_ids",
+                            @"photo_200, online, city", @"fields",
+                            @"nom",                     @"name_case", nil];
+    
+    [self.sessionManager GET:@"users.get"
+                  parameters:params
+                    progress:nil
+                     success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         
+                         NSLog(@"USER INFO: %@", responseObject);
+         
+                         NSArray* dictsArray = [responseObject objectForKey:@"response"];
+                         
+                         SiSFriend* friend = nil;
+                         
+                         for (NSDictionary* dict in dictsArray) {
+                             
+                             friend = [[SiSFriend alloc] initWithServerResponse:dict];
+                         }
+                         
+                         
+                         
+                         if (success) {
+                             
+                             success(friend);
+                         }
+                         
+                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                         NSLog(@"Error: %@", error);
+                         
+                         if (failure) {
+                             failure(error);
+                         }
+                     }];
 }
 
 @end
