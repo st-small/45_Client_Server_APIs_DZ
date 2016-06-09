@@ -11,5 +11,8 @@
 @interface SiSInfoCellTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *isOnline;
+@property (weak, nonatomic) IBOutlet UILabel *cityCountry;
+@property (weak, nonatomic) IBOutlet UILabel *dateOfBirth;
 
 @end

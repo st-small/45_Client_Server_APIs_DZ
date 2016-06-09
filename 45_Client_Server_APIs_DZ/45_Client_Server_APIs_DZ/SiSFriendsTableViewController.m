@@ -113,7 +113,7 @@ static NSInteger friendsInRequest = 5;
     cell.imageView.image = nil;
     
     [cell.imageView setImageWithURLRequest:request
-                          placeholderImage:[UIImage imageNamed:@"preview_50.png"]
+                          placeholderImage:[UIImage imageNamed:@"preview.png"]
                                    success:^(NSURLRequest* request, NSHTTPURLResponse* response, UIImage* image) {
                                        weakCell.imageView.image = image;
                                        [weakCell layoutSubviews];

@@ -134,8 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				52EC70DF1D058295001F8047 /* Models */,
-				52EC70E01D0582A6001F8047 /* Views */,
 				52EC70F01D06D3AF001F8047 /* Cells */,
+				52EC70E01D0582A6001F8047 /* Views */,
 				52EC70AF1D057F62001F8047 /* Main.storyboard */,
 				52EC70E41D0590B9001F8047 /* preview.gif */,
 				52EC70E81D059352001F8047 /* preview_50.png */,
@@ -189,10 +189,10 @@
 		52EC70E01D0582A6001F8047 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				52EC70EA1D05E92A001F8047 /* SiSFriendDetails.h */,
-				52EC70EB1D05E92A001F8047 /* SiSFriendDetails.m */,
 				52EC70D91D057FCE001F8047 /* SiSFriendsTableViewController.h */,
 				52EC70DA1D057FCE001F8047 /* SiSFriendsTableViewController.m */,
+				52EC70EA1D05E92A001F8047 /* SiSFriendDetails.h */,
+				52EC70EB1D05E92A001F8047 /* SiSFriendDetails.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";

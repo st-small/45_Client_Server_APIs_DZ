@@ -26,6 +26,14 @@
             self.image50URL = [NSURL URLWithString:urlString50];
         }
         
+        NSString* urlString100 = [responseObject objectForKey:@"photo_100"];
+        
+        if (urlString100) {
+            
+            self.image100URL = [NSURL URLWithString:urlString100];
+        }
+
+        
         NSString* urlString200 = [responseObject objectForKey:@"photo_200"];
         
         if (urlString200) {
@@ -33,8 +41,57 @@
             self.image200URL = [NSURL URLWithString:urlString200];
         }
         
+        self.isOnline = [[responseObject objectForKey:@"online"]boolValue];
+        
+        self.city = [responseObject objectForKey:@"city"];
+        self.country = [responseObject objectForKey:@"country"];
+        
+        NSString* bday = [responseObject objectForKey:@"bdate"];
+        self.dateOfBirth = [self convertDate:bday];
+        
     }
     return self;
 }
+
+- (NSString*) convertDate:(NSString*) rawStringDate {
+    
+    NSArray* partsOfDate = [rawStringDate componentsSeparatedByString:@"."];
+    
+    if ([partsOfDate count] == 2) {
+        
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"d.M"];
+        
+        NSDate* dateTemp = [dateFormatter dateFromString:rawStringDate];
+        
+        NSDateFormatter* finalDateFormatter = [[NSDateFormatter alloc] init];
+        [finalDateFormatter setDateFormat:@"dd MMMM"];
+        
+        NSString* finalDateString = [finalDateFormatter stringFromDate:dateTemp];
+        
+        return finalDateString;
+        
+        
+        
+    } else if ([partsOfDate count] == 3) {
+        
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"d.M.yyyy"];
+        
+        NSDate* dateTemp = [dateFormatter dateFromString:rawStringDate];
+        
+        NSDateFormatter* finalDateFormatter = [[NSDateFormatter alloc] init];
+        [finalDateFormatter setDateFormat:@"dd MMMM yyyy"];
+        
+        NSString* finalDateString = [finalDateFormatter stringFromDate:dateTemp];
+        
+        return finalDateString;
+        
+    }
+    
+    
+    return nil;
+}
+
 
 @end

@@ -62,7 +62,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString* infoIdentifier = @"infocell";
+    static NSString* infoIdentifier = @"infoCell";
             
     SiSInfoCellTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:infoIdentifier];
     
@@ -70,11 +70,30 @@
         cell = [[SiSInfoCellTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:infoIdentifier];
     }
     
-    cell.nameLabel.text = self.friend.lastName;
+    cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", self.friend.firstName, self.friend.lastName];
+    
+    NSString* onlineStatusText;
+    UIColor* onlineStatusColor;
+    
+    if (self.friend.isOnline) {
+        onlineStatusText = @"Доступен";
+        onlineStatusColor = [UIColor colorWithRed:10.0f/255.0f green:142.0f/255.0f blue:78.0/255.0f alpha:1.0];
+    } else {
+        onlineStatusText = @"Отсутствует";
+        onlineStatusColor = [UIColor redColor];
+    }
+    
+    cell.isOnline.text = onlineStatusText;
+    cell.isOnline.textColor = onlineStatusColor;
+    
+    cell.cityCountry.text = [NSString stringWithFormat:@"%@, %@", self.friend.city ? self.friend.city : @"информации нет", self.friend.country ? self.friend.country : @"информации нет"];
+    
+    cell.dateOfBirth.text = self.friend.dateOfBirth;
     
     NSLog(@"%@", self.friend.lastName);
     
-    [cell.photoView setImageWithURL:self.friend.image200URL placeholderImage:[UIImage imageNamed:@"preview.gif"]];
+    [cell.photoView setImageWithURL:self.friend.image100URL
+                   placeholderImage:[UIImage imageNamed:@"preview.gif"]];
     cell.photoView.layer.cornerRadius = cell.photoView.frame.size.width / 2;
     cell.photoView.layer.masksToBounds = YES;
     
