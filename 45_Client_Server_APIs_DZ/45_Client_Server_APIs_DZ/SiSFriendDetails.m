@@ -11,6 +11,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "SiSFriendsTableViewController.h"
 #import "SiSInfoCellTableViewCell.h"
+#import "SiSButtonTableViewCell.h"
 
 @interface SiSFriendDetails () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
@@ -54,6 +55,11 @@
 
 #pragma mark - UITableViewDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     return 1;
@@ -63,42 +69,58 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString* infoIdentifier = @"infoCell";
-            
-    SiSInfoCellTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:infoIdentifier];
+    static NSString* buttonIdentifier = @"buttonsCell";
     
-    if (!cell) {
-        cell = [[SiSInfoCellTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:infoIdentifier];
-    }
-    
-    cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", self.friend.firstName, self.friend.lastName];
-    
-    NSString* onlineStatusText;
-    UIColor* onlineStatusColor;
-    
-    if (self.friend.isOnline) {
-        onlineStatusText = @"Доступен";
-        onlineStatusColor = [UIColor colorWithRed:10.0f/255.0f green:142.0f/255.0f blue:78.0/255.0f alpha:1.0];
-    } else {
-        onlineStatusText = @"Отсутствует";
-        onlineStatusColor = [UIColor redColor];
-    }
-    
-    cell.isOnline.text = onlineStatusText;
-    cell.isOnline.textColor = onlineStatusColor;
-    
-    cell.cityCountry.text = [NSString stringWithFormat:@"%@, %@", self.friend.city ? self.friend.city : @"информации нет", self.friend.country ? self.friend.country : @"информации нет"];
-    
-    cell.dateOfBirth.text = self.friend.dateOfBirth;
-    
-    NSLog(@"%@", self.friend.lastName);
-    
-    [cell.photoView setImageWithURL:self.friend.image100URL
-                   placeholderImage:[UIImage imageNamed:@"preview.gif"]];
-    cell.photoView.layer.cornerRadius = cell.photoView.frame.size.width / 2;
-    cell.photoView.layer.masksToBounds = YES;
-    
-    return cell;
+    if (indexPath.section == 0) {
+        
+        SiSInfoCellTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:infoIdentifier];
+        
+        if (!cell) {
+            cell = [[SiSInfoCellTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:infoIdentifier];
+        }
+        
+        cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", self.friend.firstName, self.friend.lastName];
+        
+        NSString* onlineStatusText;
+        UIColor* onlineStatusColor;
+        
+        if (self.friend.isOnline) {
+            onlineStatusText = @"Доступен";
+            onlineStatusColor = [UIColor colorWithRed:10.0f/255.0f green:142.0f/255.0f blue:78.0/255.0f alpha:1.0];
+        } else {
+            onlineStatusText = @"Отсутствует";
+            onlineStatusColor = [UIColor redColor];
+        }
+        
+        cell.isOnline.text = onlineStatusText;
+        cell.isOnline.textColor = onlineStatusColor;
+        
+        cell.cityCountry.text = [NSString stringWithFormat:@"%@, %@", self.friend.city ? self.friend.city : @"информации нет", self.friend.country ? self.friend.country : @"информации нет"];
+        
+        cell.dateOfBirth.text = self.friend.dateOfBirth;
+        
+        NSLog(@"%@", self.friend.lastName);
+        
+        [cell.photoView setImageWithURL:self.friend.image100URL
+                       placeholderImage:[UIImage imageNamed:@"preview.gif"]];
+        cell.photoView.layer.cornerRadius = cell.photoView.frame.size.width / 2;
+        cell.photoView.layer.masksToBounds = YES;
+        
+        return cell;
 
+    } else if (indexPath.section == 1) {
+        
+        SiSButtonTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:buttonIdentifier];
+        
+        if (!cell) {
+            cell = [[SiSButtonTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:buttonIdentifier];
+        }
+        
+        return cell;
+
+    }
+            
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
