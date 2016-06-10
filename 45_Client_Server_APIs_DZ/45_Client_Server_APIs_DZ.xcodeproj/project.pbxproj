@@ -22,10 +22,7 @@
 		52EC70E91D059352001F8047 /* preview_50.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EC70E81D059352001F8047 /* preview_50.png */; };
 		52EC70EC1D05E92A001F8047 /* SiSFriendDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC70EB1D05E92A001F8047 /* SiSFriendDetails.m */; };
 		52EC70EF1D06CE4A001F8047 /* SiSInfoCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC70EE1D06CE4A001F8047 /* SiSInfoCellTableViewCell.m */; };
-		52EC71361D09DF18001F8047 /* subscr.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EC71351D09DF18001F8047 /* subscr.png */; };
-		52EC71381D09E01D001F8047 /* follow.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EC71371D09E01D001F8047 /* follow.png */; };
 		52EC713B1D09E0AD001F8047 /* SiSButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC713A1D09E0AD001F8047 /* SiSButtonTableViewCell.m */; };
-		52EC713F1D09E701001F8047 /* high_follow.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EC713E1D09E701001F8047 /* high_follow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,11 +69,8 @@
 		52EC70EB1D05E92A001F8047 /* SiSFriendDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiSFriendDetails.m; sourceTree = "<group>"; };
 		52EC70ED1D06CE4A001F8047 /* SiSInfoCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiSInfoCellTableViewCell.h; sourceTree = "<group>"; };
 		52EC70EE1D06CE4A001F8047 /* SiSInfoCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiSInfoCellTableViewCell.m; sourceTree = "<group>"; };
-		52EC71351D09DF18001F8047 /* subscr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subscr.png; sourceTree = "<group>"; };
-		52EC71371D09E01D001F8047 /* follow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = follow.png; sourceTree = "<group>"; };
 		52EC71391D09E0AD001F8047 /* SiSButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiSButtonTableViewCell.h; sourceTree = "<group>"; };
 		52EC713A1D09E0AD001F8047 /* SiSButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiSButtonTableViewCell.m; sourceTree = "<group>"; };
-		52EC713E1D09E701001F8047 /* high_follow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = high_follow.png; sourceTree = "<group>"; };
 		827C45AE65A9EDB4FC9DDA24 /* libPods-45_Client_Server_APIs_DZ.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-45_Client_Server_APIs_DZ.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D005A4EC463EFB8D928A4FB /* Pods-45_Client_Server_APIs_DZ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-45_Client_Server_APIs_DZ.release.xcconfig"; path = "Pods/Target Support Files/Pods-45_Client_Server_APIs_DZ/Pods-45_Client_Server_APIs_DZ.release.xcconfig"; sourceTree = "<group>"; };
 		AEB163A1AC8A8AD10F9C7E8D /* Pods-45_Client_Server_APIs_DZ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-45_Client_Server_APIs_DZ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-45_Client_Server_APIs_DZ/Pods-45_Client_Server_APIs_DZ.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,9 +142,6 @@
 				52EC70AF1D057F62001F8047 /* Main.storyboard */,
 				52EC70E41D0590B9001F8047 /* preview.gif */,
 				52EC70E81D059352001F8047 /* preview_50.png */,
-				52EC71351D09DF18001F8047 /* subscr.png */,
-				52EC71371D09E01D001F8047 /* follow.png */,
-				52EC713E1D09E701001F8047 /* high_follow.png */,
 				52EC70B21D057F62001F8047 /* Assets.xcassets */,
 				52EC70A91D057F62001F8047 /* AppDelegate.h */,
 				52EC70AA1D057F62001F8047 /* AppDelegate.m */,
@@ -339,10 +330,7 @@
 				52EC70E51D0590B9001F8047 /* preview.gif in Resources */,
 				52EC70B31D057F62001F8047 /* Assets.xcassets in Resources */,
 				52EC70E91D059352001F8047 /* preview_50.png in Resources */,
-				52EC713F1D09E701001F8047 /* high_follow.png in Resources */,
-				52EC71381D09E01D001F8047 /* follow.png in Resources */,
 				52EC70B11D057F62001F8047 /* Main.storyboard in Resources */,
-				52EC71361D09DF18001F8047 /* subscr.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
