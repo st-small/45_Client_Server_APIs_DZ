@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSURL* image100URL;
 @property (strong, nonatomic) NSURL* image200URL;
 @property (strong, nonatomic) NSString* friendID;
+@property (strong, nonatomic) NSString* uid;
 @property (assign, nonatomic) BOOL isOnline;
 @property (strong, nonatomic) NSString* city;
 @property (strong, nonatomic) NSString* country;

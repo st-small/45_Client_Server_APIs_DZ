@@ -48,6 +48,7 @@
         
         NSString* bday = [responseObject objectForKey:@"bdate"];
         self.dateOfBirth = [self convertDate:bday];
+        self.uid = [responseObject objectForKey:@"uid"];
         
     }
     return self;
