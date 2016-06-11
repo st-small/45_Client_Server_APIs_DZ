@@ -100,23 +100,94 @@ static NSInteger friendsInRequest = 5;
     
     SiSFriend* friend = [self.friendsArray objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", friend.firstName, friend.lastName];
+    cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", friend.firstName, friend.lastName];
+    
+    NSString* onlineStatusText;
+    UIColor* onlineStatusColor;
+    
+    if (friend.isOnline) {
+        onlineStatusText = @"Доступен";
+        onlineStatusColor = [UIColor colorWithRed:10.0f/255.0f green:142.0f/255.0f blue:78.0/255.0f alpha:1.0];
+    } else {
+        onlineStatusText = @"Отсутствует";
+        onlineStatusColor = [UIColor redColor];
+    }
+    
+    cell.isOnline.text = onlineStatusText;
+    cell.isOnline.textColor = onlineStatusColor;
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     // Добавим картинку к каждой строке
     
-    NSURLRequest* request = [NSURLRequest requestWithURL:friend.image50URL];
+    // Попытка кеширования с помощью SDWebImage
     
-    __weak UITableViewCell* weakCell = cell;
+//    __block UIActivityIndicatorView *activityIndicator;
+//    __weak SiSDefaultFrinedCell* weakCell = cell;
+//    
+//    [cell.imageView sd_setImageWithURL:friend.image50URL
+//                      placeholderImage:[UIImage imageNamed:@"placeholder.png"]
+//                               options:SDWebImageCacheMemoryOnly
+//                              progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//                                  if (!activityIndicator) {
+//                                      [weakCell.imageView addSubview:activityIndicator = [UIActivityIndicatorView.alloc initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray]];
+//                                      activityIndicator.center = weakCell.imageView.center;
+//                                      [activityIndicator startAnimating];
+//                                  }
+//                              }
+//                             completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//                                 [activityIndicator removeFromSuperview];
+//                                 activityIndicator = nil;
+//                             }];
+//    return cell;
+//
+
+//    // Попытка кеширования с помощью Haneke
+//    
+//    cell.imageView.image = nil;
+//    
+//    HNKCacheFormat *format = [HNKCache sharedCache].formats[@"origin"];
+//    if (!format) {
+//        format = [[HNKCacheFormat alloc] initWithName:@"origin"];
+//        format.size = CGSizeMake(100, 100);
+//        format.scaleMode = HNKScaleModeAspectFill;
+//        format.compressionQuality = 0.5;
+//        format.diskCapacity = 10 * 1024 * 1024; // 10MB
+//        format.preloadPolicy = HNKPreloadPolicyLastSession;
+//    }
+//    
+//    cell.imageView.hnk_cacheFormat = format;
+//   
+//    [cell.imageView hnk_setImageFromURL:friend.image100URL];
+//    
+//    return cell;
     
-    cell.imageView.image = nil;
+    // Попытка кеширования с помощью AFNetworking
     
-    [cell.imageView setImageWithURLRequest:request
+    NSURLRequest* request = [NSURLRequest requestWithURL:friend.image100URL
+                                             cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                         timeoutInterval:60];
+    
+    __weak SiSDefaultFrinedCell* weakCell = cell;
+    
+    cell.photoView.image = nil;
+    
+    [cell.photoView setImageWithURLRequest:request
                           placeholderImage:[UIImage imageNamed:@"preview.png"]
                                    success:^(NSURLRequest* request, NSHTTPURLResponse* response, UIImage* image) {
-                                       weakCell.imageView.image = image;
-                                       [weakCell layoutSubviews];
+                                       
+                                       [UIView transitionWithView:weakCell.photoView
+                                                         duration:0.3f
+                                                          options:UIViewAnimationOptionTransitionCrossDissolve
+                                                       animations:^{
+                                                           weakCell.photoView.image = image;
+                                                           
+                                                           CALayer* imageLayer = weakCell.photoView.layer;
+                                                           [imageLayer setCornerRadius:imageLayer.frame.size.width/2];
+                                                           [imageLayer setMasksToBounds:YES];
+                                                           
+                                                       } completion:NULL];
+                                     
                                    } failure:^(NSURLRequest* request, NSHTTPURLResponse* response, NSError* error) {
                                        NSLog(@"Something bad...");
                                    }];
