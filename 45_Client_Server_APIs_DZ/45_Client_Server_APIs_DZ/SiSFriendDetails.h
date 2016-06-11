@@ -11,6 +11,7 @@
 
 @interface SiSFriendDetails : UIViewController
 
+@property (strong, nonatomic) NSString* friendID;
 @property (strong, nonatomic) SiSFriend* friend;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

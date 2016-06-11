@@ -12,6 +12,8 @@
 #import "SiSFriendsTableViewController.h"
 #import "SiSInfoCellTableViewCell.h"
 #import "SiSButtonTableViewCell.h"
+#import "SiSFollowers.h"
+#import "SiSSubscriptions.h"
 
 @interface SiSFriendDetails () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
@@ -30,7 +32,7 @@
     
     self.loadingData = YES;
     
-    [self getFriendInfoWithFriendID:self.friend.friendID];
+    [self getFriendInfoWithFriendID:self.friendID];
     
 }
 
@@ -126,6 +128,25 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+}
+
+#pragma mark - Segues
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"followersSegue"]) {
+        
+        SiSFollowers* vc = [segue destinationViewController];
+        vc.friendID = self.friendID;
+        
+        
+    } else if ([[segue identifier] isEqualToString:@"subscriptionsSegue"]) {
+        
+        SiSSubscriptions* vc = [segue destinationViewController];
+        SiSFriend* friend = self.friend;
+        vc.friendID = friend.friendID;
+        
+    }
 }
 
 
