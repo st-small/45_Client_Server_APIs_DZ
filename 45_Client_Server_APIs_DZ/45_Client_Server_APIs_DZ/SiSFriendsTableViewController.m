@@ -11,6 +11,9 @@
 #import "SiSFriend.h"
 #import "UIImageView+AFNetworking.h"
 #import "SiSFriendDetails.h"
+#import "SiSDefaultFrinedCell.h"
+#import "UIImageView+Haneke.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface SiSFriendsTableViewController ()
 
@@ -88,11 +91,11 @@ static NSInteger friendsInRequest = 5;
     
     static NSString* identifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    SiSDefaultFrinedCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
     if (!cell) {
         
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[SiSDefaultFrinedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         
     }
     
@@ -229,6 +232,7 @@ static NSInteger friendsInRequest = 5;
         
         SiSFriendDetails* vc = [segue destinationViewController];
         vc.friend = friend;
+        vc.friendID = friend.friendID;
         
     }
 }
