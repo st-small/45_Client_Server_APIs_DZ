@@ -23,6 +23,9 @@
 		52EC70EC1D05E92A001F8047 /* SiSFriendDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC70EB1D05E92A001F8047 /* SiSFriendDetails.m */; };
 		52EC70EF1D06CE4A001F8047 /* SiSInfoCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC70EE1D06CE4A001F8047 /* SiSInfoCellTableViewCell.m */; };
 		52EC713B1D09E0AD001F8047 /* SiSButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC713A1D09E0AD001F8047 /* SiSButtonTableViewCell.m */; };
+		52EC71421D0AA9D2001F8047 /* SiSFollowers.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC71411D0AA9D2001F8047 /* SiSFollowers.m */; };
+		52EC71451D0AAB63001F8047 /* SiSSubscriptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC71441D0AAB63001F8047 /* SiSSubscriptions.m */; };
+		52EC71481D0AC6A8001F8047 /* SiSDefaultFrinedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC71471D0AC6A8001F8047 /* SiSDefaultFrinedCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +74,12 @@
 		52EC70EE1D06CE4A001F8047 /* SiSInfoCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiSInfoCellTableViewCell.m; sourceTree = "<group>"; };
 		52EC71391D09E0AD001F8047 /* SiSButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiSButtonTableViewCell.h; sourceTree = "<group>"; };
 		52EC713A1D09E0AD001F8047 /* SiSButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiSButtonTableViewCell.m; sourceTree = "<group>"; };
+		52EC71401D0AA9D2001F8047 /* SiSFollowers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiSFollowers.h; sourceTree = "<group>"; };
+		52EC71411D0AA9D2001F8047 /* SiSFollowers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiSFollowers.m; sourceTree = "<group>"; };
+		52EC71431D0AAB63001F8047 /* SiSSubscriptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiSSubscriptions.h; sourceTree = "<group>"; };
+		52EC71441D0AAB63001F8047 /* SiSSubscriptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiSSubscriptions.m; sourceTree = "<group>"; };
+		52EC71461D0AC6A8001F8047 /* SiSDefaultFrinedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiSDefaultFrinedCell.h; sourceTree = "<group>"; };
+		52EC71471D0AC6A8001F8047 /* SiSDefaultFrinedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiSDefaultFrinedCell.m; sourceTree = "<group>"; };
 		827C45AE65A9EDB4FC9DDA24 /* libPods-45_Client_Server_APIs_DZ.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-45_Client_Server_APIs_DZ.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D005A4EC463EFB8D928A4FB /* Pods-45_Client_Server_APIs_DZ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-45_Client_Server_APIs_DZ.release.xcconfig"; path = "Pods/Target Support Files/Pods-45_Client_Server_APIs_DZ/Pods-45_Client_Server_APIs_DZ.release.xcconfig"; sourceTree = "<group>"; };
 		AEB163A1AC8A8AD10F9C7E8D /* Pods-45_Client_Server_APIs_DZ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-45_Client_Server_APIs_DZ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-45_Client_Server_APIs_DZ/Pods-45_Client_Server_APIs_DZ.debug.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +205,10 @@
 				52EC70DA1D057FCE001F8047 /* SiSFriendsTableViewController.m */,
 				52EC70EA1D05E92A001F8047 /* SiSFriendDetails.h */,
 				52EC70EB1D05E92A001F8047 /* SiSFriendDetails.m */,
+				52EC71401D0AA9D2001F8047 /* SiSFollowers.h */,
+				52EC71411D0AA9D2001F8047 /* SiSFollowers.m */,
+				52EC71431D0AAB63001F8047 /* SiSSubscriptions.h */,
+				52EC71441D0AAB63001F8047 /* SiSSubscriptions.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -207,6 +220,8 @@
 				52EC70EE1D06CE4A001F8047 /* SiSInfoCellTableViewCell.m */,
 				52EC71391D09E0AD001F8047 /* SiSButtonTableViewCell.h */,
 				52EC713A1D09E0AD001F8047 /* SiSButtonTableViewCell.m */,
+				52EC71461D0AC6A8001F8047 /* SiSDefaultFrinedCell.h */,
+				52EC71471D0AC6A8001F8047 /* SiSDefaultFrinedCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -407,7 +422,10 @@
 				52EC713B1D09E0AD001F8047 /* SiSButtonTableViewCell.m in Sources */,
 				52EC70AB1D057F62001F8047 /* AppDelegate.m in Sources */,
 				52EC70EF1D06CE4A001F8047 /* SiSInfoCellTableViewCell.m in Sources */,
+				52EC71421D0AA9D2001F8047 /* SiSFollowers.m in Sources */,
+				52EC71481D0AC6A8001F8047 /* SiSDefaultFrinedCell.m in Sources */,
 				52EC70E31D058B3A001F8047 /* SiSFriend.m in Sources */,
+				52EC71451D0AAB63001F8047 /* SiSSubscriptions.m in Sources */,
 				52EC70DE1D058284001F8047 /* SiSServerManager.m in Sources */,
 				52EC70EC1D05E92A001F8047 /* SiSFriendDetails.m in Sources */,
 				52EC70A81D057F62001F8047 /* main.m in Sources */,

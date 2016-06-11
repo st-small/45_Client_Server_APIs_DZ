@@ -23,4 +23,11 @@
                  onSuccess:(void(^)(SiSFriend* friend))success
                  onFailure:(void(^)(NSError *error))failure;
 
+- (void) getFollowersOrSubsriptionsWithMethod:(NSString*) method
+                                    ForUserID:(NSString*) friendID
+                                   WithOffset:(NSInteger) offset
+                                        count:(NSInteger) count
+                                    onSuccess:(void(^)(NSArray* objects)) success
+                                    onFailure:(void(^)(NSError* error)) failure;
+
 @end

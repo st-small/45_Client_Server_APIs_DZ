@@ -57,7 +57,8 @@
                             @(offset),      @"offset",
                             @"photo_50,"
                             "photo_100,"
-                            "photo_200",    @"fields",
+                            "photo_200,"
+                            "online",       @"fields",
                             @"nom",         @"name_case", nil];
     
     [self.sessionManager GET:@"friends.get"
@@ -215,6 +216,112 @@
     }];
     
 }
+
+- (void) getFollowersOrSubsriptionsWithMethod:(NSString*) method
+                                    ForUserID:(NSString*) friendID
+                                   WithOffset:(NSInteger) offset
+                                        count:(NSInteger) count
+                                    onSuccess:(void(^)(NSArray* objects)) success
+                                    onFailure:(void(^)(NSError* error)) failure {
+    
+    NSDictionary* params;
+    
+    if ([method isEqualToString:@"users.getFollowers"]) {
+        
+        NSString* requiredFields =
+        @"photo_50,"
+        "photo_100,"
+        "photo_200,"
+        "city,"
+        "country,"
+        "bdate,"
+        "followers_count,"
+        "online,"
+        "home_town";
+        
+        params = [NSDictionary dictionaryWithObjectsAndKeys:
+                  friendID,      @"user_id",
+                  @(count),      @"count",
+                  @(offset),     @"offset",
+                  requiredFields,@"fields",
+                  @"ru",         @"lang",
+                  @"nom",        @"name_case", nil];
+        
+    } else if ([method isEqualToString:@"users.getSubscriptions"]) {
+        
+        params = [NSDictionary dictionaryWithObjectsAndKeys:
+                  friendID,      @"user_id",
+                  @(count),      @"count",
+                  @(offset),     @"offset",
+                  @"photo_100",  @"fields",
+                  @"ru",         @"lang",
+                  @"1",          @"extended", nil];
+    }
+    
+    
+    [self.sessionManager GET:method
+                  parameters:params
+                    progress:nil
+                     success:^(NSURLSessionDataTask *operation, NSDictionary* responseObject) {
+         
+         NSLog(@"+++ users.getFollSub JSON: %@", responseObject);
+         
+         if ([method isEqualToString:@"users.getFollowers"]) {
+             
+             NSDictionary* responseDict = [responseObject objectForKey:@"response"];
+             
+             NSArray* dictsArray = [responseDict objectForKey:@"items"];
+             
+             NSMutableArray* objectsArray = [NSMutableArray array];
+             
+             for (NSDictionary* dict in dictsArray) {
+                 SiSFriend* friend = [[SiSFriend alloc] initWithServerResponse:dict];
+                 NSLog(@"%@", friend.uid);
+                 [objectsArray addObject:friend];
+             }
+             
+             if (success) {
+                 success(objectsArray);
+             }
+
+         } else if ([method isEqualToString:@"users.getSubscriptions"]) {
+             
+             NSArray* dictsArray = [responseObject objectForKey:@"response"];
+             
+             NSMutableArray* objectsArray = [NSMutableArray array];
+             
+             for (NSDictionary* dict in dictsArray) {
+                 
+                 if ([[dict objectForKey:@"type"] isEqualToString:@"profile"]) {
+                     
+                     SiSFriend* friend = [[SiSFriend alloc] initWithServerResponse:dict];
+                     [objectsArray addObject:friend];
+                     
+//                 } else if ([[dict objectForKey:@"type"] isEqualToString:@"page"]) {
+//                     
+//                     ANGroup* user = [[ANGroup alloc] initWithServerResponse:dict];
+//                     [objectsArray addObject:user];
+                     
+                 }
+                 
+             }
+             
+             if (success) {
+                 success(objectsArray);
+             }
+             
+         }
+
+     } failure:^(NSURLSessionDataTask *operation, NSError *error) {
+         NSLog(@"Error: %@", error);
+         
+         if (failure) {
+             failure(error);
+         }
+     }];
+    
+}
+
      
 
 @end
