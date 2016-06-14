@@ -143,8 +143,7 @@
     } else if ([[segue identifier] isEqualToString:@"subscriptionsSegue"]) {
         
         SiSSubscriptions* vc = [segue destinationViewController];
-        SiSFriend* friend = self.friend;
-        vc.friendID = friend.friendID;
+        vc.friendID = self.friendID;
         
     }
 }

@@ -9,6 +9,7 @@
 #import "SiSServerManager.h"
 #import "AFNetworking.h"
 #import "SiSFriend.h"
+#import "SiSGroup.h"
 
 @interface SiSServerManager ()
 
@@ -297,10 +298,10 @@
                      SiSFriend* friend = [[SiSFriend alloc] initWithServerResponse:dict];
                      [objectsArray addObject:friend];
                      
-//                 } else if ([[dict objectForKey:@"type"] isEqualToString:@"page"]) {
-//                     
-//                     ANGroup* user = [[ANGroup alloc] initWithServerResponse:dict];
-//                     [objectsArray addObject:user];
+                 } else if ([[dict objectForKey:@"type"] isEqualToString:@"page"]) {
+                     
+                     SiSGroup* group = [[SiSGroup alloc] initWithServerResponse:dict];
+                     [objectsArray addObject:group];
                      
                  }
                  
