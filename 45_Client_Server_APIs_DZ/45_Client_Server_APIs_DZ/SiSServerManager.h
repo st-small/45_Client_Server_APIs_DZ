@@ -30,4 +30,10 @@
                                     onSuccess:(void(^)(NSArray* objects)) success
                                     onFailure:(void(^)(NSError* error)) failure;
 
+- (void) getWallPostsForUser:(NSString*) friendID
+                  withOffset:(NSInteger) offset
+                       count:(NSInteger) count
+                   onSuccess:(void(^)(NSArray* posts)) success
+                   onFailure:(void(^)(NSError* error, NSInteger statusCode)) failure;
+
 @end

@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "SiSFriend.h"
 #import "SiSGroup.h"
+#import "SiSPost.h"
 
 @interface SiSServerManager ()
 
@@ -320,6 +321,56 @@
              failure(error);
          }
      }];
+    
+}
+
+- (void) getWallPostsForUser:(NSString*) friendID
+                  withOffset:(NSInteger) offset
+                       count:(NSInteger) count
+                   onSuccess:(void(^)(NSArray* posts)) success
+                   onFailure:(void(^)(NSError* error, NSInteger statusCode)) failure {
+    
+    
+    NSDictionary* params =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+     friendID,          @"owner_id",
+     @(count),          @"count",
+     @(offset),         @"offset",
+     nil];
+    
+    [self.sessionManager
+     GET:@"wall.get"
+     parameters:params
+     progress:nil
+     success:^(NSURLSessionDataTask *operation, NSDictionary* responseObject) {
+         NSLog(@"JSON: %@", responseObject);
+         
+         NSArray* dictsArray = [responseObject objectForKey:@"response"];
+         
+         if ([dictsArray count] > 1) {
+             dictsArray = [dictsArray subarrayWithRange:NSMakeRange(1, (int)[dictsArray count] - 1)];
+         } else {
+             dictsArray = nil;
+         }
+         
+         NSMutableArray* objectsArray = [NSMutableArray array];
+         
+         for (NSDictionary* dict in dictsArray) {
+             SiSPost* post = [[SiSPost alloc] initWithServerResponse:dict];
+             [objectsArray addObject:post];
+             
+         }
+         
+         if (success) {
+             success(objectsArray);
+         }
+         
+     } failure:^(NSURLSessionDataTask *operation, NSError *error) {
+         NSLog(@"Error: %@", error);
+         
+     }];
+    
+    
     
 }
 

@@ -14,17 +14,25 @@
 #import "SiSButtonTableViewCell.h"
 #import "SiSFollowers.h"
 #import "SiSSubscriptions.h"
+#import "SiSPostCell.h"
+#import "SiSPost.h"
 
 @interface SiSFriendDetails () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
 @property (assign, nonatomic) BOOL loadingData;
 
+@property (strong, nonatomic) NSMutableArray* postsArray;
+
 @end
+
+static NSInteger postsInRequest = 20;
 
 @implementation SiSFriendDetails
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.postsArray = [NSMutableArray array];
     
     NSLog(@"%@", self.friend.firstName);
     
@@ -33,6 +41,19 @@
     self.loadingData = YES;
     
     [self getFriendInfoWithFriendID:self.friendID];
+    [self getPostsFromServer];
+    
+}
+
+#pragma mark - Helper Methods
+
+- (void) printOutPost:(SiSPost*) post {
+    NSLog(@"date = %@", post.date);
+    NSLog(@"postImageURL = %@", post.postImageURL);
+    NSLog(@"heightImage = %d", post.heightImage);
+    NSLog(@"text = %@", post.text);
+    NSLog(@"comments = %@", post.comments);
+    NSLog(@"likes = %@", post.likes);
     
 }
 
@@ -55,16 +76,43 @@
     }];
 }
 
+- (void) getPostsFromServer {
+    
+    [[SiSServerManager sharedManager] getWallPostsForUser:self.friendID
+                                              withOffset:[self.postsArray count]
+                                                   count:postsInRequest
+                                               onSuccess:^(NSArray *posts) {
+                                                   
+                                                   [self.postsArray addObjectsFromArray:posts];
+                                                   
+                                                   [self.tableView reloadData];
+                                                   
+                                                   self.loadingData = NO;
+                                                   
+                                               }
+                                               onFailure:^(NSError *error, NSInteger statusCode) {
+                                                   NSLog(@"!!getWallPostsForUser error!!");
+                                               }];
+}
+    
+
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 1;
+    if (section == 0) {
+        return 1;
+    } else if (section == 1) {
+        return 1;
+    } else {
+        return [self.postsArray count];
+    }
     
 }
 
@@ -72,6 +120,7 @@
     
     static NSString* infoIdentifier = @"infoCell";
     static NSString* buttonIdentifier = @"buttonsCell";
+    static NSString *postIdentifier = @"postCell";
     
     if (indexPath.section == 0) {
         
@@ -120,9 +169,77 @@
         
         return cell;
 
+    } else if (indexPath.section == 2) {
+        
+        SiSPostCell* postCell = [tableView dequeueReusableCellWithIdentifier:postIdentifier];
+        
+        if (!postCell) {
+            postCell = [[SiSPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:postIdentifier];
+        }
+        
+        SiSPost* post = [self.postsArray objectAtIndex:indexPath.row];
+        
+        postCell.nameLabel.text = [NSString stringWithFormat:@"%@ %@",self.friend.firstName, self.friend.lastName];
+        
+        postCell.postTextLabel.text = [NSString stringWithFormat:@"%@", post.text];
+        postCell.dateLabel.text = post.date;
+        
+        postCell.commentsCountLabel.text = post.comments;
+        postCell.likesCountLabel.text = post.likes;
+        
+        [postCell.postAuthorImage setImageWithURL:self.friend.image50URL];
+        
+        postCell.postImage.image = nil;
+        
+        NSURLRequest* request = [NSURLRequest requestWithURL:post.postImageURL];
+        
+        __weak SiSPostCell* weakPostCell = postCell;
+        
+        [postCell.postImage
+         setImageWithURLRequest:request
+         placeholderImage:nil
+         success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+             
+             weakPostCell.postImage.image = image;
+             
+         }
+         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+             
+         }];
+        
+        
+        return postCell;
     }
             
     return nil;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return UITableViewAutomaticDimension;
+    
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        return 110;
+        
+    } else if (indexPath.section == 1) {
+        return 53;
+        
+    } else if (indexPath.section == 2) {
+        
+        return UITableViewAutomaticDimension;
+        
+        
+    } else {
+        return 100;
+    }
+    
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

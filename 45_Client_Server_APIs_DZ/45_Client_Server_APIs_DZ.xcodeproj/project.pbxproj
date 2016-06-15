@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0163C905BE7D0BEC9E5B3DF0 /* libPods-45_Client_Server_APIs_DZ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 827C45AE65A9EDB4FC9DDA24 /* libPods-45_Client_Server_APIs_DZ.a */; };
 		523F93AF1D0EB11A007203C0 /* SiSGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F93AE1D0EB11A007203C0 /* SiSGroup.m */; };
+		523F93B21D1062D8007203C0 /* SiSPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F93B11D1062D8007203C0 /* SiSPost.m */; };
+		523F93B51D106597007203C0 /* SiSPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F93B41D106597007203C0 /* SiSPostCell.m */; };
 		52EC70A81D057F62001F8047 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC70A71D057F62001F8047 /* main.m */; };
 		52EC70AB1D057F62001F8047 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC70AA1D057F62001F8047 /* AppDelegate.m */; };
 		52EC70B11D057F62001F8047 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52EC70AF1D057F62001F8047 /* Main.storyboard */; };
@@ -49,6 +51,10 @@
 /* Begin PBXFileReference section */
 		523F93AD1D0EB11A007203C0 /* SiSGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiSGroup.h; sourceTree = "<group>"; };
 		523F93AE1D0EB11A007203C0 /* SiSGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiSGroup.m; sourceTree = "<group>"; };
+		523F93B01D1062D8007203C0 /* SiSPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiSPost.h; sourceTree = "<group>"; };
+		523F93B11D1062D8007203C0 /* SiSPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiSPost.m; sourceTree = "<group>"; };
+		523F93B31D106597007203C0 /* SiSPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiSPostCell.h; sourceTree = "<group>"; };
+		523F93B41D106597007203C0 /* SiSPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiSPostCell.m; sourceTree = "<group>"; };
 		52EC70A31D057F62001F8047 /* 45_Client_Server_APIs_DZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 45_Client_Server_APIs_DZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52EC70A71D057F62001F8047 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		52EC70A91D057F62001F8047 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -197,6 +203,8 @@
 				52EC70E21D058B3A001F8047 /* SiSFriend.m */,
 				523F93AD1D0EB11A007203C0 /* SiSGroup.h */,
 				523F93AE1D0EB11A007203C0 /* SiSGroup.m */,
+				523F93B01D1062D8007203C0 /* SiSPost.h */,
+				523F93B11D1062D8007203C0 /* SiSPost.m */,
 				52EC70DC1D058284001F8047 /* SiSServerManager.h */,
 				52EC70DD1D058284001F8047 /* SiSServerManager.m */,
 			);
@@ -227,6 +235,8 @@
 				52EC713A1D09E0AD001F8047 /* SiSButtonTableViewCell.m */,
 				52EC71461D0AC6A8001F8047 /* SiSDefaultFrinedCell.h */,
 				52EC71471D0AC6A8001F8047 /* SiSDefaultFrinedCell.m */,
+				523F93B31D106597007203C0 /* SiSPostCell.h */,
+				523F93B41D106597007203C0 /* SiSPostCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -426,9 +436,11 @@
 				52EC70DB1D057FCE001F8047 /* SiSFriendsTableViewController.m in Sources */,
 				52EC713B1D09E0AD001F8047 /* SiSButtonTableViewCell.m in Sources */,
 				52EC70AB1D057F62001F8047 /* AppDelegate.m in Sources */,
+				523F93B51D106597007203C0 /* SiSPostCell.m in Sources */,
 				52EC70EF1D06CE4A001F8047 /* SiSInfoCellTableViewCell.m in Sources */,
 				52EC71421D0AA9D2001F8047 /* SiSFollowers.m in Sources */,
 				52EC71481D0AC6A8001F8047 /* SiSDefaultFrinedCell.m in Sources */,
+				523F93B21D1062D8007203C0 /* SiSPost.m in Sources */,
 				52EC70E31D058B3A001F8047 /* SiSFriend.m in Sources */,
 				52EC71451D0AAB63001F8047 /* SiSSubscriptions.m in Sources */,
 				52EC70DE1D058284001F8047 /* SiSServerManager.m in Sources */,
